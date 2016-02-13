@@ -11,6 +11,5 @@
     "tests"
   ],
   "devDependencies": {
-    "foundation": "~5.5.2"
   }
 }
