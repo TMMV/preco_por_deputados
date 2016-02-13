@@ -1,102 +1,208 @@
-.PAF {
+/*.PAF {
   background-color: #f7941e;
-  /* fallback */
-  background: repeating-linear-gradient(45deg, #f7941e, #f7941e 45px, #0093dd 45px, #0093dd 90px); }
-
-.PAN {
+  background: repeating-linear-gradient(
+    45deg,
+    #f7941e,
+    #f7941e 45px,
+    #0093dd 45px,
+    #0093dd 90px
+  );
+}*/
+span.PAN {
   background-color: #0a6580; }
 
-.PPDPSD {
+span.PPDPSD {
   background-color: #f7941e; }
 
-.PSD {
+span.PSD {
   background-color: #f7941e; }
 
-.PPD {
+span.PPD {
   background-color: #f7941e; }
 
-.PS {
+span.PS {
   background-color: #feaaaa; }
 
-.CDU, .PCPPEV {
+span.CDU,
+span.PCPPEV {
   background-color: #da251e; }
 
-.PCP {
+span.PCP {
   background-color: #da251e; }
 
-.CDSPP {
+span.CDSPP {
   background-color: #da251e; }
 
-.CDS {
+span.CDS {
   background-color: #0093dd; }
 
-.BE {
+span.BE {
   background-color: #c90535; }
 
-.PCTPMRPP {
+span.PCTPMRPP {
   background-color: #ef4035; }
 
-.PSN {
+span.PSN {
   background-color: #1b256d; }
 
-.PRD {
+span.PRD {
   background-color: #216b31; }
 
-.APU {
+span.APU {
   background-color: #ff5d61; }
 
-.PDC {
+span.PDC {
   background-color: #050505; }
 
-.AD {
+span.AD {
   background-color: #00ffff; }
 
-.FRS {
+span.FRS {
   background-color: #ff0000; }
 
-.UDP {
+span.UDP {
   background-color: #ff0000; }
 
-.MDP {
+span.MDP {
   background-color: #c83019; }
 
+/* Eric Meyer's Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, main,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Os nossos estilos */
+/* Tipografia
+*/
+@font-face {
+  font-family: 'Comme Regular';
+  src: local("Comme Regular"), url("/fonts/CommeSans/Comme-Regular.ttf") format("truetype"); }
+
+body {
+  font-family: 'Comme Regular', DejaVu Sans, Arial, sans-serif;
+  line-height: 1.4; }
+
+h1 {
+  font-size: 2.25em;
+  margin-bottom: .5em; }
+
+h2 {
+  font-size: 1.85em; }
+
+h3 {
+  font-size: 0.875em; }
+
+/* Layout
+*/
+body {
+  background: #ccc;
+  color: #333; }
+
+.row:before, .row:after {
+  content: " ";
+  display: table; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; }
+
+.row:after,
+.header:after {
+  clear: both; }
+
 .row {
-  max-width: 100rem; }
+  width: 92%;
+  margin: 1em auto; }
 
 .ano {
-  text-align: center; }
-  .ano h1 {
-    margin-top: 25px;
+  text-align: center;
+  margin-top: 25px; }
+  .ano h2 {
+    font-size: 1.25em;
+    line-height: 1em;
+    font-weight: bold;
     margin-bottom: 0;
-    line-height: 1em; }
+    padding: 10px 0; }
   .ano .info {
-    display: inline-block; }
+    text-align: center; }
     .ano .info .partido {
-      font-weight: bold;
+      text-align: center;
       display: inline-block;
-      border-radius: 20px;
       margin: 5px;
-      padding: 25px; }
-      .ano .info .partido .header {
-        margin-bottom: 10px; }
-      .ano .info .partido h3 {
-        font-weight: bold;
-        line-height: 1em;
-        margin: 0; }
-      .ano .info .partido .ball {
-        border-radius: 50%;
-        display: table-cell;
-        vertical-align: middle;
-        line-height: 1.2em;
-        color: white;
-        -webkit-box-shadow: 5px 5px 5px -5px #666666;
-        -moz-box-shadow: 5px 5px 5px -5px #666666;
-        box-shadow: 5px 5px 5px -5px #666666; }
-      .ano .info .partido:hover {
+      padding: 10px 20px;
+      /*&:hover{
         opacity: 0.8;
-        cursor: default; }
+        cursor: default;
+      }*/ }
+      .ano .info .partido .header {
+        margin: 10px 0; }
+        .ano .info .partido .header span {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          border-radius: 20px;
+          margin-right: 5px; }
+        .ano .info .partido .header h3 {
+          font-weight: bold;
+          text-transform: uppercase;
+          margin: 0; }
+        .ano .info .partido .header p {
+          font-size: 0.75em; }
+      .ano .info .partido div {
+        margin: 0 auto; }
+        .ano .info .partido div .ball {
+          border-radius: 50%;
+          line-height: 1.2em;
+          background: #666;
+          /*-webkit-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+          -moz-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+          box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);*/ }
+          .ano .info .partido div .ball span {
+            font-size: 1em;
+            line-height: 1;
+            font-weight: bold;
+            color: #fff; }
+            .ano .info .partido div .ball span small {
+              display: block;
+              font-size: 60%;
+              font-weight: normal;
+              text-transform: uppercase;
+              letter-spacing: 1px; }
 
-.PAF {
+span.PAF {
   background-color: #f7941e;
   /* fallback */
-  background: repeating-linear-gradient(45deg, #f7941e, #f7941e 45px, #0093dd 45px, #0093dd 90px); }
+  background: repeating-linear-gradient(45deg, #f7941e, #f7941e 6px, #0093dd 6px, #0093dd 90px); }

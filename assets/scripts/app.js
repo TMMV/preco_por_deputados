@@ -78,15 +78,15 @@ var addInfoToHTML = function(){
   for(i in anosSorted){
     var anoName = anosSorted[i];
     var anoValue = info[anoName];
-    $(".main").append(
-      "<div class='ano " + anoName + "'><h1>" + anoName + "</h1>"
+    $("#main").append(
+      "<div class='ano " + anoName + "'><h2>" + anoName + "</h2>"
       + "<div class='info'></div>"
       + "</div>"
     );
 
-    $("."+anoName+" .info").append(
+    /*$("."+anoName+" .info").append(
       "<hr>"
-    );
+    );*/
 
     var sortingF = function getSortedKeys(obj) {
       var keys = []; for(var key in obj) keys.push(key);
@@ -112,13 +112,13 @@ var addInfoToHTML = function(){
 
       $("."+anoName+" .info").append(
         "<div class='partido '>"
-        + "<div class='header'><h3>" + partidoName + "</h3>" + partidoValue["num_deputados"] + " deputados"
-        //+ "</br>" + parseInt( partidoValue["total_receitas"] ).toLocaleString() + " €"
-        + "</div>"
         + "<div>"
+        //+ "<div style='height:"+partidoHeight+"px; width:"+partidoWidth+"px;' class='ball " + treatedPartidoName + "'>"
         + "<div style='height:"+partidoHeight+"px; width:"+partidoWidth+"px;' class='ball " + treatedPartidoName + "'>"
-        + pricePerDeputado
-        + "</br><small>€ / deputado</small></div>"
+        + "<span>" + pricePerDeputado + "€ <small> por deputado</small></span></div>"
+        + "</div>"        
+        + "<div class='header'><h3><span class='" + treatedPartidoName + "'></span>" + partidoName + "</h3>" + "<p>" + partidoValue["num_deputados"] + " deputados eleitos" + "</p>"
+        //+ "</br>" + parseInt( partidoValue["total_receitas"] ).toLocaleString() + " €"
         + "</div>"
         + "</div>"
       );

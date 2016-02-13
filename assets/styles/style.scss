@@ -1,60 +1,187 @@
-.row{
-  max-width: 100rem;
+/* Eric Meyer's Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, main,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Os nossos estilos */
+
+/* Tipografia
+*/
+
+@font-face {
+  font-family: 'Comme Regular';
+  src: local('Comme Regular'), url('/fonts/CommeSans/Comme-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Comme Regular', DejaVu Sans, Arial, sans-serif;
+  line-height: 1.4;
+}
+
+h1 {  
+  font-size: 2.25em;
+  margin-bottom: .5em;  
+}
+
+h2 {  
+  font-size: 1.85em;
+}
+
+h3 {  
+  font-size: 0.875em;
+}
+
+
+/* Layout
+*/
+
+body {
+  background: #ccc;
+  color: #333;
+}
+
+
+.row:before, .row:after {
+  content: " ";
+  display: table;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+
+.row:after,
+.header:after {
+  clear: both;
+}
+
+.row {
+  width: 92%;
+  margin: 1em auto;
 }
 
 .ano{
   text-align: center;
-  h1{
-    margin-top: 25px;
-    margin-bottom: 0;
+  margin-top: 25px;
+  h2{
+    font-size: 1.25em; 
     line-height: 1em;
+    font-weight: bold;
+    margin-bottom: 0;
+    padding: 10px 0;
   }
   .info{
-    display: inline-block;
+    text-align: center;
+    
     .partido{
-      font-weight: bold;
+      text-align: center;
       display: inline-block;
-      border-radius: 20px;
       margin: 5px;
-      padding: 25px;
+      padding: 10px 20px;
 
       .header{
-        margin-bottom: 10px;
+        margin: 10px 0;
+
+        span {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          border-radius: 20px;
+          margin-right: 5px;
+        }
+        h3{
+          font-weight: bold;
+          text-transform: uppercase;
+          margin: 0;
+        }
+        p {
+          font-size: 0.75em;
+        }
       }
 
-      h3{
-        font-weight: bold;
-        line-height: 1em;
-        margin: 0;
+      div {
+        margin: 0 auto;
+        .ball{
+          border-radius: 50%;
+          line-height: 1.2em;
+          background: #666;
+          /*-webkit-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+          -moz-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+          box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);*/
+          
+          span {
+            font-size: 1em;
+            line-height: 1;
+            font-weight: bold;
+            color: #fff;
+            
+            small {
+              display: block;
+              font-size: 60%;
+              font-weight: normal;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              
+              }
+          }
+        }
       }
 
-      .ball{
-        border-radius: 50%;
-        display: table-cell;
-        vertical-align: middle;
-        line-height: 1.2em;
-        color: white;
-        -webkit-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
-        -moz-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
-        box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
-      }
-
-      &:hover{
+      /*&:hover{
         opacity: 0.8;
         cursor: default;
-      }
+      }*/
     }
   }
 }
 
-
-.PAF {
+span.PAF {
   background-color: #f7941e; /* fallback */
   background: repeating-linear-gradient(
     45deg,
     #f7941e,
-    #f7941e 45px,
-    #0093dd 45px,
+    #f7941e 6px,
+    #0093dd 6px,
     #0093dd 90px
   );
 }
