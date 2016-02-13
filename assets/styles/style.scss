@@ -1,0 +1,48 @@
+.row{
+  max-width: 100rem;
+}
+
+.ano{
+  text-align: center;
+  h1{
+    margin-top: 25px;
+    margin-bottom: 0;
+    line-height: 1em;
+  }
+  .info{
+    display: inline-block;
+    .partido{
+      font-weight: bold;
+      display: inline-block;
+      border-radius: 20px;
+      margin: 5px;
+      padding: 25px;
+
+      .header{
+        margin-bottom: 10px;
+      }
+
+      h3{
+        font-weight: bold;
+        line-height: 1em;
+        margin: 0;
+      }
+
+      .ball{
+        border-radius: 50%;
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 1.2em;
+        color: white;
+        -webkit-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+        -moz-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+        box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
+      }
+
+      &:hover{
+        opacity: 0.8;
+        cursor: default;
+      }
+    }
+  }
+}
