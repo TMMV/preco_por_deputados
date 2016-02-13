@@ -1,4 +1,3 @@
-$(document).foundation();
 
 var info = {2005:{},2009:{},2011:{},2015:{}};
 

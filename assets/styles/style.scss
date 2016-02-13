@@ -46,3 +46,16 @@
     }
   }
 }
+
+
+.PAF {
+  background-color: #f7941e; /* fallback */
+  background: repeating-linear-gradient(
+    45deg,
+    #f7941e,
+    #f7941e 45px,
+    #0093dd 45px,
+    #0093dd 90px
+  );
+}
+
