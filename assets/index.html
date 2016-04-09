@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <title>Quanto Custa um Deputado?</title>
@@ -10,17 +11,34 @@
   <!-- only importantFile.js will be injected here -->
   <!-- endinject -->
 </head>
-<body>
+
+<body class="container wrapper">
 
   <section class="row" id="intro">
     <h1>Quanto custou a cada partido eleger um deputado?</h1>
     <p>Orçamento da campanha eleitoral dividida pelo número de deputados eleitos revela-nos quanto custou a cada partido eleger cada um dos seus deputados.</p>
   </section>
+  <div id="sec_top" class="ui medium top borderless fixed hidden menu">
+    <div class='anos'>
+      <a class='item' href='#' onClick="move(2005); return false;">2005</a>
+      <a class='item' href='#' onClick="move(2009); return false;">2009</a>
+      <a class='item' href='#' onclick='move(2011); return false;'>2011</a>
+      <a class='item' href='#' onClick="move(2015); return false;">2015</a>
+    </div>
+  </div>
 
   <section class="row" id="main">
+    <div class='pt-perspective' id='pt-main'>
+
+    </div>
   </section>
-    
+
   <!-- inject:js -->
   <!-- endinject -->
+  <script>
+    $(document).ready(function() {
+    });
+  </script>
 </body>
+
 </html>

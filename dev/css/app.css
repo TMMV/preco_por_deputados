@@ -8,62 +8,62 @@
     #0093dd 90px
   );
 }*/
-span.PAN {
+.PAN {
   background-color: #0a6580; }
 
-span.PPDPSD {
+.PPDPSD {
   background-color: #f7941e; }
 
-span.PSD {
+.PSD {
   background-color: #f7941e; }
 
-span.PPD {
+.PPD {
   background-color: #f7941e; }
 
-span.PS {
+.PS {
   background-color: #feaaaa; }
 
-span.CDU,
-span.PCPPEV {
+.CDU,
+.PCPPEV {
   background-color: #da251e; }
 
-span.PCP {
+.PCP {
   background-color: #da251e; }
 
-span.CDSPP {
-  background-color: #da251e; }
-
-span.CDS {
+.CDSPP {
   background-color: #0093dd; }
 
-span.BE {
+.CDS {
+  background-color: #0093dd; }
+
+.BE {
   background-color: #c90535; }
 
-span.PCTPMRPP {
+.PCTPMRPP {
   background-color: #ef4035; }
 
-span.PSN {
+.PSN {
   background-color: #1b256d; }
 
-span.PRD {
+.PRD {
   background-color: #216b31; }
 
-span.APU {
+.APU {
   background-color: #ff5d61; }
 
-span.PDC {
+.PDC {
   background-color: #050505; }
 
-span.AD {
+.AD {
   background-color: #00ffff; }
 
-span.FRS {
+.FRS {
   background-color: #ff0000; }
 
-span.UDP {
+.UDP {
   background-color: #ff0000; }
 
-span.MDP {
+.MDP {
   background-color: #c83019; }
 
 /* Eric Meyer's Reset CSS */
@@ -84,7 +84,6 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline; }
 
 body {
@@ -112,8 +111,15 @@ table {
   font-family: 'Comme Regular';
   src: local("Comme Regular"), url("/fonts/CommeSans/Comme-Regular.ttf") format("truetype"); }
 
+@font-face {
+  font-family: 'Raleway Bold';
+  src: local("Raleway"), url("./raleway/Raleway-Bold.ttf") format("truetype"); }
+
+html {
+  font-family: 'Raleway', Arial, sans-serif !important; }
+
 body {
-  font-family: 'Comme Regular', DejaVu Sans, Arial, sans-serif;
+  font-family: inherit;
   line-height: 1.4; }
 
 h1 {
@@ -131,6 +137,12 @@ h3 {
 body {
   background: #ccc;
   color: #333; }
+
+.container {
+  min-height: 100vh; }
+
+.wrapper {
+  min-width: 90vw; }
 
 .row:before, .row:after {
   content: " ";
@@ -186,12 +198,11 @@ body {
         .ano .info .partido div .ball {
           border-radius: 50%;
           line-height: 1.2em;
-          background: #666;
           /*-webkit-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
           -moz-box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);
           box-shadow: 5px 5px 5px -5px rgba(102,102,102,1);*/ }
           .ano .info .partido div .ball span {
-            font-size: 1em;
+            font-size: 1.2em;
             line-height: 1;
             font-weight: bold;
             color: #fff; }
@@ -202,7 +213,81 @@ body {
               text-transform: uppercase;
               letter-spacing: 1px; }
 
-span.PAF {
+.PAF {
   background-color: #f7941e;
   /* fallback */
-  background: repeating-linear-gradient(45deg, #f7941e, #f7941e 6px, #0093dd 6px, #0093dd 90px); }
+  background: repeating-linear-gradient(45deg, #f7941e, #f7941e 6px, #0093dd 6px, #0093dd 20px); }
+
+.centered-container {
+  position: relative; }
+
+.centered-content {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.pt-perspective {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  perspective: 1200px; }
+
+.pt-page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.pt-page-current,
+.no-js .pt-page {
+  visibility: visible;
+  z-index: 1; }
+
+.no-js body {
+  overflow: auto; }
+
+.pt-page-ontop {
+  z-index: 999; }
+
+.pt-page-moveToLeft {
+  -webkit-animation: moveToLeft .6s ease both;
+  animation: moveToLeft .6s ease both; }
+
+.pt-page-moveFromRight {
+  -webkit-animation: moveFromRight .6s ease both;
+  animation: moveFromRight .6s ease both; }
+
+@-webkit-keyframes moveToLeft {
+  from { }
+  to {
+    -webkit-transform: translateX(-100%); } }
+
+@keyframes moveToLeft {
+  from { }
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-webkit-keyframes moveFromRight {
+  from {
+    -webkit-transform: translateX(100%); } }
+
+@keyframes moveFromRight {
+  from {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%); } }

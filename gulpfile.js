@@ -24,10 +24,11 @@ gulp.task('styles',function(){
     .pipe(gulp.dest(paths.dev + '/css'))
     .pipe(browserSync.stream());
 });
-  
+
 gulp.task('scripts',function(){
   gulp.src([
     paths.bower + '/jquery/dist/jquery.js',
+    paths.bower + '/modernizr/src/Modernizr.js',
     paths.assets + '/scripts/app.js'
   ])
   .pipe(concat('app.js'))
@@ -121,7 +122,7 @@ gulp.task('build',['buildFinalHTML'],function(){
       paths.assets + '/favicons/**/*.*'
     ])
     .pipe(gulp.dest(paths.build + '/favicons'));
-    
+
     gulp.src([
       paths.assets + '/images/**/*.*'
     ])

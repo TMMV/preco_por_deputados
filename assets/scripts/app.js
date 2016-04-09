@@ -59,7 +59,7 @@ var addDeputados = function(deputados){
 
 var addInfoToHTML = function(){
   // first lets score the maximum cash per deputado over every year and use that as a baseline
-  var maximumRadius = 200; //in pixels
+  var maximumRadius = 300; //in pixels
   var maximumCashPerDeputado = 0;
   for(anoName in info){
     var anoValue = info[anoName];
@@ -72,14 +72,16 @@ var addInfoToHTML = function(){
     }
   }
 
+var main = $('#pt-main');
   // lets draw!
   var keys = Object.keys(info);
   var anosSorted = keys.sort().reverse();
   for(i in anosSorted){
     var anoName = anosSorted[i];
     var anoValue = info[anoName];
-    $("#main").append(
-      "<div class='ano " + anoName + "'><h2>" + anoName + "</h2>"
+    var pageAno = "pt-page-"+anoName;
+    main.append(
+      "<div class='ano " + anoName + " pt-page " + pageAno + "'><h2>" + anoName + "</h2>"
       + "<div class='info'></div>"
       + "</div>"
     );
@@ -100,9 +102,11 @@ var addInfoToHTML = function(){
       var partidoValue = anoValue[partidoName];
       if(anoName!="2015"){
         receitas = partidoValue["total_real_receitas"];
+        comment = "<br/>";
       }
       else{
         receitas = partidoValue["total_orcamento_receitas"];
+        //comment = "<br/>calculados tendo como base os valores de orçamentação previstos";
       }
       var pricePerDeputado = Math.round(receitas/partidoValue["num_deputados"]);
       var partidoHeight = Math.sqrt(pricePerDeputado/maximumCashPerDeputado*Math.pow(maximumRadius,2));
@@ -111,17 +115,103 @@ var addInfoToHTML = function(){
       var treatedPartidoName = partidoName.replace("/","").replace("-","");
 
       $("."+anoName+" .info").append(
-        "<div class='partido '>"
+        "<div class='partido'>"
         + "<div>"
         //+ "<div style='height:"+partidoHeight+"px; width:"+partidoWidth+"px;' class='ball " + treatedPartidoName + "'>"
         + "<div style='height:"+partidoHeight+"px; width:"+partidoWidth+"px;' class='ball " + treatedPartidoName + "'>"
-        + "<span>" + pricePerDeputado + "€ <small> por deputado</small></span></div>"
-        + "</div>"        
-        + "<div class='header'><h3><span class='" + treatedPartidoName + "'></span>" + partidoName + "</h3>" + "<p>" + partidoValue["num_deputados"] + " deputados eleitos" + "</p>"
-        //+ "</br>" + parseInt( partidoValue["total_receitas"] ).toLocaleString() + " €"
+        +"<div class='centered-content'>"
+        + "<span>" + pricePerDeputado + "€ <small> por deputado</small></span>"
+        +"</div></div>"
+        + "</div>"
+        + "<div class='header'><h3><span class='" + treatedPartidoName + "'></span>" + partidoName + "</h3>" + "<p>" + partidoValue["num_deputados"]
+        + " deputados eleitos" + "</p>"
+        + "</br>" + parseInt( receitas ).toLocaleString() + " €"
         + "</div>"
         + "</div>"
       );
     }
   }
 };
+
+var isAnimating = false,
+    endCurrPage = false,
+    endNextPage = false,
+    animEndEventNames = {
+        'WebkitAnimation': 'webkitAnimationEnd',
+        'OAnimation': 'oAnimationEnd',
+        'msAnimation': 'MSAnimationEnd',
+        'animation': 'animationend'
+    },
+    // animation end event name
+
+    //VOLTAR AQUI *****************************************************************
+
+    //AnimEndEventName = 'webkitAnimationEnd';
+    AnimEndEventName = animEndEventNames[Modernizr.prefixed('animation')],
+    // support css animations
+    support = Modernizr.cssanimations;
+
+
+/*
+var pages = [
+$(".pt-page-1 .table .tableCell .container").height(),
+$(".pt-page-2 .table .tableCell .container").height(),
+$(".pt-page-3 .table .tableCell .container").height(),
+$(".pt-page-4 .table .tableCell .container").height()
+];
+var navigation = $(".navigation").height();
+*/
+
+function move(page) {
+    if (isAnimating) {
+        return false;
+    }
+	$currPage = $(".pt-page-current");
+    if($currPage.hasClass("pt-page-"+page)){
+    	return false;
+    }
+    $( "li.active" ).removeClass("active");
+    $nextPage = $(".pt-page-" + page);
+    isAnimating = true;
+
+    $nextPage.addClass('pt-page-current');
+    $($( "li" ).get(page-1)).addClass("active");
+
+    $currPage.addClass('pt-page-moveToLeft').on(animEndEventName, function() {
+        $currPage.off(animEndEventName);
+        endCurrPage = true;
+        if (endNextPage) {
+            onEndAnimation($currPage, $nextPage,page);
+        }
+    });
+
+    $nextPage.addClass('pt-page-moveFromRight').on(animEndEventName, function() {
+        $nextPage.off(animEndEventName);
+        endNextPage = true;
+        if (endCurrPage) {
+            onEndAnimation($currPage, $nextPage,page);
+        }
+    });
+
+    if (!support) {
+        onEndAnimation($currPage, $nextPage,page);
+    }
+
+}
+
+function onEndAnimation($outpage, $inpage,page) {
+    endCurrPage = false;
+    endNextPage = false;
+    resetPage($outpage, $inpage,page);
+    isAnimating = false;
+}
+
+function resetPage($outpage, $inpage,page) {
+	$outpage.removeClass('pt-page-moveToLeft');
+    $outpage.removeClass('pt-page-current');
+    $inpage.removeClass('pt-page-moveFromRight');
+    if($(window).scrollTop()>150)
+        $('html,body').animate({
+          scrollTop: $('.content').offset().top
+        }, 300);
+}
